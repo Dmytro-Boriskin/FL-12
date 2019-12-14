@@ -1,0 +1,243 @@
+//css reset
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: $font-family;
+  background-color: $section-color;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+@mixin mark {
+    position: absolute;
+    z-index: 0;
+    height: 50px;
+    content: "";
+    background-color: $mark-color;
+}
+
+@mixin size {
+    min-width: 320px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+@mixin button {
+    color: $font-color;
+    background-color: $button-bgc;
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+}  
+
+button {
+    @include button;
+}
+  
+  .header-wrap,
+  .footer-wrap,
+  .section_card_wrap,
+  .section_banner {
+    @include size;  
+  }
+
+.header-wrap{
+    padding-top: 20px;
+    position: relative; 
+}  
+
+.landing-logo p {
+    display: inline-block;
+    width: 90px;
+    font-size: 20px;
+    font-weight: bold;
+    color: $header-color;
+}
+
+.landing-logo p span {
+    padding-left: 10px;
+    font-size: 9px;
+    font-weight: normal;
+}
+
+.header {
+    background: $header-image-url no-repeat 50% 50% / 100% auto;
+    border-radius: 0 0 760px 0 / 0 0 285px 0;
+    height: 600px;
+    
+&_heading {
+    display: block;
+    width: 300px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-size: 40px;
+    font-weight: bold;
+}
+&_text {
+    width: 550px;
+    word-spacing: 3px;
+    line-height: 20px;
+    color: $header-color;
+}
+&_button {
+    margin-top: 70px;
+    margin-right: 275px;
+}
+&:before{
+    @include mark;
+    top: 180px;
+    left: 70px;
+    width: 190px;
+    height: 40px;
+}}
+
+.login {
+    text-decoration: underline;
+    color: $font-color;
+}
+
+.section {
+    background-color: $section-color;
+    position: relative;
+    &:before {
+    @include mark;
+    top: 20px;
+    left: 685px;
+    width: 145px;
+    height: 30px
+}
+&_text {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+&_card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 20px;
+    background-color:$section-bgc;
+    color: $font-color;
+    text-align: justify;
+    margin: 10px;
+}
+&_card_text{
+    line-height: 20px;
+    font-weight: normal;
+}
+&_card_heading {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    margin: 15px;   
+}
+&_card_right_container a {
+    margin-left: 50px;
+}
+&_link{
+    @extend .login;
+    margin-top: 15px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}}
+
+
+.section_banner {
+    position: absolute;
+    top: 730px;
+    right: 90px;
+    width: 1180px;
+    &_text_wrap {
+        position: relative;
+        border-radius: 5px;
+        padding: 26px 140px 25px;
+        display: block;
+        background: linear-gradient(to right,  $section-banner-color_1 0%, $section-banner-color_2 100%);
+    }
+    &_heading{
+    font-size: 25px;
+    font-weight: bold;
+    }
+    &_text {
+        color: $font-color;
+        margin-top: 12px;
+        font-weight: normal;
+    }
+    &_button {
+        position: absolute;
+        z-index: 1;
+        top: 30px;
+        left: 1000px;
+}}
+
+.section_banner_text_wrap::before {
+    @include mark;
+    top: 24px;
+    left: 250px;
+    width: 60px;
+    height: 30px;
+}
+
+
+.footer {
+    margin-top: 120px;
+    background-color:black;
+    color: $font-color;
+&-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+&_logo {
+    font-size: 15px;
+}
+&-logo p {
+    display: inline-block;
+    width: 90px;
+    font-size: 20px;
+    font-weight: bold;
+}
+&_text {
+width: 300px;
+font-size: 15px;
+
+}
+&-cr {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+}
+
