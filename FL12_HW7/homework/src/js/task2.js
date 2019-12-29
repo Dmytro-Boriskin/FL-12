@@ -1,12 +1,10 @@
 let startGame;
 let newGame = true;
-let attempts = 0;
 let attemptsQuantity = 3;
 let randomNumber;
 let userGuessNumber;
 let range = 9;
 let totalAmount = 0;
-let divider = 2;
 let four = 4;
 let three = 3;
 let two = 2;
