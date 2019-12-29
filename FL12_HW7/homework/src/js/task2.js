@@ -6,36 +6,42 @@ let randomNumber;
 let userGuessNumber;
 let range = 9;
 let totalAmount = 0;
-let prize = 100;
 let divider = 2;
 let four = 4;
 let three = 3;
 let two = 2;
+let i;
+let prize = {
+    3: 100,
+    2: 50,
+    1: 25
+}
 
 startGame = confirm('Do you want to play a game?');
 while (newGame === true) {
     if (startGame) {
         randomNumber = Math.floor(Math.random() * range);
         console.log('random ' + randomNumber);
-        do {
+        for (let i = 3; i > 0; i--) {
             userGuessNumber = parseInt(prompt(`Choose a roulette pocket number from 0 to ${range - 1} 
                                             \nAttempts left: ${attemptsQuantity}
                                             \nTotal prize: ${totalAmount}
-                                            \nPossible prize on current attempt: ${prize}$`));
+                                            \nPossible prize on current attempt: ${prize[i]}$`));
             console.log('user ' + userGuessNumber);
             console.log('attemptsQuantity ' + attemptsQuantity);
             if (randomNumber === userGuessNumber && attemptsQuantity === three) {
-                totalAmount += prize;
+                totalAmount += prize[i];
                 break;
             } else if (randomNumber === userGuessNumber && attemptsQuantity === two) {
-                totalAmount += prize / divider;
+                totalAmount += prize[i];
                 break;
             } else if (randomNumber === userGuessNumber && attemptsQuantity === 1) {
-                totalAmount += prize / (divider * divider);
+                totalAmount += prize[i];
                 break;
             }
             attemptsQuantity--;
-        } while (attempts < attemptsQuantity);
+        }
+
         if (randomNumber !== userGuessNumber) {
             alert(`Thank you for your participation. Your prize is: ${totalAmount} $`);
             newGame = confirm('Play again?');
@@ -45,7 +51,10 @@ while (newGame === true) {
         if (!newGame) {
             alert(`Thank you for your participation. Your prize is: ${totalAmount} $`);
         } else {
-            prize = prize * two;
+            for (let i = 3; i > 0; i--) {
+                prize[i] = prize[i] * two;
+                console.log(prize[i]);
+            }
             range = range + four;
             attemptsQuantity = three;
         }
