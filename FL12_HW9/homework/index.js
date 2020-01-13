@@ -7,6 +7,15 @@ const _3 = 3;
 const _5 = 5;
 const _7 = 7;
 const _8 = 8;
+const _10 = 10;
+const _14 = 14;
+const _29 = 29;
+const _30 = 30;
+const _31 = 31;
+const _48 = 48;
+const _58 = 58;
+const _365 = 365;
+const _2019 = 2019;
 
 let oldArgs = ['1', _2, _3, '4'];
 let newArgs = [];
@@ -104,20 +113,68 @@ console.log('Task 7');
 const actors = [
     { name: 'tommy', age: 36 },
     { name: 'lee', age: 28 }
-  ];
+];
 
- function getArrayOfKeys (actors, name){
-     console.log(actors);
- }
-   
-  getArrayOfKeys(actors, 'name'); // [‘tommy’, ‘lee’]
-  
+function getArrayOfKeys(arr, key) {
+    let newActors = [];
+    executeforEach(arr, function (el) {
+        newActors.push(el[key]);
+    })
+    console.log(newActors);
+}
 
+getArrayOfKeys(actors, 'name');
 
+//Task 8
+console.log('Task 8');
 
+function substitute(arr) {
+    let newArr = [];
+    mapArray(arr, function (el) {
+        if (el < _30) {
+            newArr.push('*')
+        } else {
+            newArr.push(el);
+        }
+    })
+    console.log(newArr);
+}
 
+substitute([_58, _14, _48, _2, _31, _29]);
 
+//Task 9
+console.log('Task 9');
 
+const date = new Date(_2019, 0, _2);
 
+function getPastDay(date, xDays) {
+    let dayOfMonth = new Date();
+    dayOfMonth.setDate(date.getDate() - xDays);
+    console.log(dayOfMonth.getDate());
+}
 
+getPastDay(date, _1); // 1, (1 Jan 2019)
+getPastDay(date, _2); // 31, (31 Dec 2018)
+getPastDay(date, _365); // 2, (2 Jan 2018)
 
+//Task 10
+console.log('Task 10');
+
+function formatDate(date) {
+    let year = date.getFullYear();
+    let month = date.getMonth() + _1;
+    let day = date.getDate();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+
+    if (hours < _10) {
+        hours = '0' + hours;
+    }
+    if (minutes < _10) {
+        minutes = '0' + minutes;
+    }
+    console.log(`${year}/${month}/${day} ${hours}:${minutes}`);
+}
+
+formatDate(new Date('6/15/2018 09:15:00')) // "2018/6/15 09:15"
+formatDate(new Date()) // "2020/1/7 12:56" // gets current local time
